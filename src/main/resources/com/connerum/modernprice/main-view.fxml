@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" style="-fx-background-color: #1D2D44;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.connerum.modernprice.Controller.MainController">
+   <children>
+      <Button fx:id="printButton" layoutX="366.0" layoutY="474.0" mnemonicParsing="false" onAction="#printClick" onMouseEntered="#checkInputs" prefHeight="50.0" prefWidth="150.0" style="-fx-border-radius: 12; -fx-background-color: #0D1321; -fx-border-color: #F0EBD8;" text="Print" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="26.0" />
+         </font></Button>
+      <Label layoutX="234.0" layoutY="27.0" text="Create Cash &amp; Credit Price Tags Offline" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="185.0" layoutY="136.0" text="Cash Price" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="557.0" layoutY="136.0" text="Label Size" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="307.0" text="Quantity" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cashInput" alignment="CENTER" layoutX="185.0" layoutY="211.0" prefHeight="35.0" prefWidth="145.0" promptText="\$19.99" style="-fx-border-radius: 12;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="quantityInput" alignment="CENTER" layoutX="384.0" layoutY="377.0" prefHeight="35.0" prefWidth="114.0" promptText="3" style="-fx-border-radius: 12;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <ChoiceBox fx:id="labelSize" layoutX="550.0" layoutY="211.0" prefHeight="35.0" prefWidth="150.0" style="-fx-border-radius: 12;" />
+      <Label layoutX="165.0" layoutY="173.0" text="Enter Product’s Cash Price " textFill="#748cab">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="497.0" layoutY="173.0" text="Choose Label Size Currently in Printer" textFill="#748cab">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="333.0" layoutY="343.0" text="Enter Quantity of Labels to Print" textFill="#748cab">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
