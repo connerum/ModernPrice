@@ -17,14 +17,27 @@ public class Zebra {
             PrintService service = PrintServiceLookup.lookupDefaultPrintService();
 
             String zplData = "^XA" +
-                    "^FO50,50" +
-                    "^A0N,50,50" + // Font, height, and width
-                    "^FB375,1,0,C,0" + // Field block for centering
-                    "^FD" + labels.name + "^FS" + // The text "Shoes"
-                    "^FO50,150" + // Position for the second text field
-                    "^A0N,50,50" + // Font, height, and width
-                    "^FB375,1,0,C,0" + // Field block for centering
-                    "^FD" + "$" + labels.cash + "^FS" + // The price text
+                    // "Card Price" text in the middle of the left half
+                    "^FO20,50" +
+                    "^A0N,40,40" +
+                    "^FB190,1,0,C,0" +
+                    "^FD" + "Card Price" + "^FS" +
+                    // Card price below "Card Price" text
+                    "^FO20,100" +
+                    "^A0N,40,40" +
+                    "^FB190,1,0,C,0" +
+                    "^FD" + "$" + labels.credit + "^FS" +
+
+                    // "Cash Price" text in the middle of the right half
+                    "^FO220,50" +
+                    "^A0N,40,40" +
+                    "^FB190,1,0,C,0" +
+                    "^FD" + "Cash Price" + "^FS" +
+                    // Cash price below "Cash Price" text
+                    "^FO220,100" +
+                    "^A0N,40,40" +
+                    "^FB190,1,0,C,0" +
+                    "^FD" + "$" + labels.cash + "^FS" +
                     "^XZ";
 
             byte[] bytes = zplData.getBytes();
@@ -33,7 +46,9 @@ public class Zebra {
             Doc doc = new SimpleDoc(bytes, flavor, null);
 
             DocPrintJob job = service.createPrintJob();
-            job.print(doc, null);
+            for (int i = 0; i < labels.quantity; i++) {
+                job.print(doc, null);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

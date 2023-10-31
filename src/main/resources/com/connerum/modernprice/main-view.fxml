@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="550.0" maxWidth="850.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" style="-fx-background-color: #3E85C6;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.connerum.modernprice.Controller.MainController">
+<Pane maxHeight="550.0" maxWidth="850.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="700.0" style="-fx-background-color: #3E85C6;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.connerum.modernprice.Controller.MainController">
    <children>
-      <Pane layoutX="50.0" layoutY="85.0" prefHeight="381.0" prefWidth="750.0" style="-fx-background-color: #303136; -fx-border-radius: 10; -fx-background-radius: 10;">
+      <Pane layoutX="25.0" layoutY="80.0" prefHeight="425.0" prefWidth="650.0" style="-fx-background-color: #303136; -fx-border-radius: 10; -fx-background-radius: 10;">
          <children>
-            <Label layoutX="506.0" layoutY="216.0" text="Quantity" textFill="WHITE">
+            <Label layoutX="411.0" layoutY="184.0" text="Quantity" textFill="WHITE">
                <font>
                   <Font name="SansSerif Bold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="518.0" layoutY="45.0" text="Price" textFill="WHITE">
+            <Label layoutX="69.0" layoutY="194.0" text="Price" textFill="WHITE">
                <font>
                   <Font name="SansSerif Bold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="146.0" layoutY="216.0" text="Label Size" textFill="WHITE">
+            <Label layoutX="73.0" layoutY="48.0" text="Label Size" textFill="WHITE">
                <font>
                   <Font name="SansSerif Bold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="472.0" layoutY="254.0" text="Number of Labels to Print" textFill="#44ade4">
+            <Label layoutX="411.0" layoutY="219.0" text="Number of Labels to Print" textFill="#44ade4">
                <font>
                   <Font name="SansSerif Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="107.0" layoutY="254.0" text="Choose Size Currently in Printer" textFill="#44ade4">
+            <Label layoutX="73.0" layoutY="83.0" text="Choose Size Currently in Printer" textFill="#44ade4">
                <font>
                   <Font name="SansSerif Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="461.0" layoutY="85.0" text="Enter Product’s Cash Price " textFill="#44ade4">
+            <Label layoutX="69.0" layoutY="229.0" text="Enter Product’s Cash Price " textFill="#44ade4">
                <font>
                   <Font name="SansSerif Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cashInput" alignment="CENTER" layoutX="470.0" layoutY="112.0" prefHeight="35.0" prefWidth="175.0" promptText="\$19.99" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
+            <TextField fx:id="cashInput" alignment="CENTER" layoutX="69.0" layoutY="257.0" prefHeight="35.0" prefWidth="175.0" promptText="\$19.99" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="quantityInput" alignment="CENTER" layoutX="488.0" layoutY="282.0" prefHeight="35.0" prefWidth="150.0" promptText="3" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
+            <TextField fx:id="quantityInput" alignment="CENTER" layoutX="411.0" layoutY="247.0" prefHeight="35.0" prefWidth="150.0" promptText="3" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
-            <ChoiceBox fx:id="labelSize" layoutX="127.0" layoutY="282.0" prefHeight="35.0" prefWidth="175.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-font-size: 20; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-fontstyle: Bold; -fx-text-fill: White;" />
-            <Label layoutX="144.0" layoutY="45.0" text="Item Name" textFill="WHITE">
+            <Button fx:id="printButton" layoutX="250.0" layoutY="351.0" mnemonicParsing="false" onAction="#printClick" prefHeight="50.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #3E85C6; -fx-border-color: #546174;" text="Print" textFill="WHITE">
                <font>
-                  <Font name="SansSerif Bold" size="28.0" />
+                  <Font name="SansSerif Bold" size="26.0" />
                </font>
-            </Label>
-            <Label layoutX="141.0" layoutY="85.0" text="Enter Product’s Name" textFill="#44ade4">
+            </Button>
+            <RadioButton fx:id="sizeRatio1" layoutX="69.0" layoutY="111.0" mnemonicParsing="false" text="2&quot;  x  1&quot;" textFill="WHITE">
                <font>
-                  <Font name="SansSerif Bold" size="14.0" />
+                  <Font name="SansSerif Bold" size="18.0" />
                </font>
-            </Label>
-            <TextField fx:id="nameInput" alignment="CENTER" layoutX="127.0" layoutY="112.0" prefHeight="43.0" prefWidth="175.0" promptText="Shoes" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
+            </RadioButton>
+            <RadioButton fx:id="sizeRatio2" layoutX="219.0" layoutY="111.0" mnemonicParsing="false" text="1 1/4&quot;  x  1&quot;" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="SansSerif Bold" size="18.0" />
                </font>
-            </TextField>
+            </RadioButton>
+            <RadioButton fx:id="sizeRatio3" layoutX="400.0" layoutY="111.0" mnemonicParsing="false" text="2&quot;  x  1/2&quot;" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="18.0" />
+               </font>
+            </RadioButton>
          </children>
       </Pane>
-      <Button fx:id="printButton" layoutX="353.0" layoutY="483.0" mnemonicParsing="false" onAction="#printClick" prefHeight="50.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #303136; -fx-border-color: #546174;" text="Print" textFill="WHITE">
+      <Label layoutX="171.0" layoutY="24.0" text="ModernPrice Label Creator" textFill="WHITE">
          <font>
-            <Font name="SansSerif Bold" size="26.0" />
-         </font></Button>
-      <Label layoutX="286.0" layoutY="30.0" text="SURV Offline Price Tags" textFill="WHITE">
-         <font>
-            <Font name="SansSerif Bold" size="24.0" />
+            <Font name="SansSerif Bold" size="28.0" />
          </font>
       </Label>
    </children>
