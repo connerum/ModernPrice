@@ -19,12 +19,12 @@ public class Zebra {
             String zplData = "^XA" +
                     "^FO50,50" +
                     "^A0N,50,50" + // Font, height, and width
-                    "^FB400,1,0,C,0" + // Field block for centering
+                    "^FB375,1,0,C,0" + // Field block for centering
                     "^FD" + labels.name + "^FS" + // The text "Shoes"
                     "^FO50,150" + // Position for the second text field
                     "^A0N,50,50" + // Font, height, and width
-                    "^FB400,1,0,C,0" + // Field block for centering
-                    "^FD" + labels.cash + "^FS" + // The text "$129.99"
+                    "^FB375,1,0,C,0" + // Field block for centering
+                    "^FD" + "$" + labels.cash + "^FS" + // The price text
                     "^XZ";
 
             byte[] bytes = zplData.getBytes();
