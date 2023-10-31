@@ -1,7 +1,7 @@
 module com.connerum.modernprice {
     requires javafx.controls;
     requires javafx.fxml;
-    requires zpl2.driver.SNAPSHOT;
+    requires java.desktop;
 
 
     opens com.connerum.modernprice to javafx.fxml;

@@ -1,31 +1,43 @@
 package com.connerum.modernprice.Model;
-import com.finium.core.drivers.zebra.model.ZebraLabel;
-import com.finium.core.drivers.zebra.model.element.ZebraBarCode39;
-import com.finium.core.drivers.zebra.model.element.ZebraText;
-import com.finium.core.drivers.zebra.zpl.enums.ZebraFont;
-import com.finium.core.drivers.zebra.zpl.support.ZplUtils;
+
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.SimpleDoc;
+import javax.print.DocPrintJob;
+import javax.print.Doc;
+import javax.print.DocFlavor;
+
 public class Zebra {
     public static void main(String[] args) {
-        ZebraLabel zebraLabel = new ZebraLabel(912, 912);
-        zebraLabel.setDefaultZebraFont(ZebraFont.ZEBRA_ZERO);
+        try {
+            String defaultPrinter = PrintServiceLookup.lookupDefaultPrintService().getName();
+            System.out.println("Default printer: " + defaultPrinter);
 
-        zebraLabel.addElement(new ZebraText(10, 84, "Product:", 14));
-        zebraLabel.addElement(new ZebraText(395, 85, "Camera", 14));
+            PrintService service = PrintServiceLookup.lookupDefaultPrintService();
 
-        zebraLabel.addElement(new ZebraText(10, 161, "CA201212AA", 14));
+            String zplData = "^XA" +
+                    "^FO50,50" +
+                    "^A0N,50,50" + // Font, height, and width
+                    "^FB400,1,0,C,0" + // Field block for centering
+                    "^FDShoes^FS" + // The text "Shoes"
+                    "^FO50,150" + // Position for the second text field
+                    "^A0N,50,50" + // Font, height, and width
+                    "^FB400,1,0,C,0" + // Field block for centering
+                    "^FD$129.99^FS" + // The text "$129.99"
+                    "^XZ";
 
-        //Add Code Bar 39
-        zebraLabel.addElement(new ZebraBarCode39(10, 297, "CA201212AA", 118, 2, 2));
+            byte[] bytes = zplData.getBytes();
 
-        zebraLabel.addElement(new ZebraText(10, 365, "Qté:", 11));
-        zebraLabel.addElement(new ZebraText(180, 365, "3", 11));
-        zebraLabel.addElement(new ZebraText(317, 365, "QA", 11));
+            DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
+            Doc doc = new SimpleDoc(bytes, flavor, null);
 
-        zebraLabel.addElement(new ZebraText(10, 520, "Ref log:", 11));
-        zebraLabel.addElement(new ZebraText(180, 520, "0035", 11));
-        zebraLabel.addElement(new ZebraText(10, 596, "Ref client:", 11));
-        zebraLabel.addElement(new ZebraText(180, 599, "1234", 11));
+            DocPrintJob job = service.createPrintJob();
+            job.print(doc, null);
 
-        ZplUtils.printZpl(zebraLabel, ip, port);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
