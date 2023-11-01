@@ -1,18 +1,27 @@
 package com.connerum.modernprice.Model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Convert {
-    public static float cashToCredit(String cash) {
+    public static String cashToCredit(String cash) {
         float cashValue = extractFloatValue(cash);
-        float creditValue = (float) (cashValue * 1.04);
+        BigDecimal creditValue = new BigDecimal(cashValue).multiply(new BigDecimal("1.04"));
 
         // Round up to the nearest cent
-        creditValue = (float) (Math.ceil(creditValue * 100) / 100.0);
+        creditValue = creditValue.setScale(2, RoundingMode.CEILING);
 
-        return creditValue;
+        // Convert to string with 2 decimal places
+        return String.format("%.2f", creditValue);
     }
 
     public static float extractFloatValue(String str) {
         String cleanedStr = str.replaceAll("[^\\d.]", "");
         return Float.parseFloat(cleanedStr);
+    }
+
+    public static String formatCashValue(String cash) {
+        Float cashStr = extractFloatValue(cash);
+        return String.format("%.2f", cashStr);
     }
 }
