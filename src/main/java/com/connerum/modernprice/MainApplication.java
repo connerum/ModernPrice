@@ -45,7 +45,7 @@ public class MainApplication extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
 
         // Set the application icon
-        Image icon = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("images/logo.png")));
+        Image icon = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("images/barcodeIcon.png")));
         stage.getIcons().add(icon);
 
         stage.setScene(scene);
