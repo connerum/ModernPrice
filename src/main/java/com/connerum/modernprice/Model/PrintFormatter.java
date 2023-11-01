@@ -20,26 +20,27 @@ public class PrintFormatter {
 
     public String smallSize(Labels labels) {
         return "^XA" +
-                // "Card Price" text in the left half, adjusting for reduced height
-                "^FO10,10" +
-                "^A0N,20,20" +
-                "^FB190,1,0,C,0" +
+                "^LL101" +  // Explicitly set label length
+                // "Card Price" text in the left half
+                "^FO60,10" +
+                "^A0N,18,18" +
+                "^FB100,1,0,C,0" +
                 "^FD" + "Card Price" + "^FS" +
-                // Card price below "Card Price" text, adjusting for reduced height
-                "^FO10,40" +
-                "^A0N,20,20" +
-                "^FB190,1,0,C,0" +
+                // Card price below "Card Price" text
+                "^FO60,40" +
+                "^A0N,24,24" +
+                "^FB100,1,0,C,0" +
                 "^FD" + "$" + labels.credit + "^FS" +
 
-                // "Cash Price" text in the right half, adjusting for reduced height
+                // "Cash Price" text in the right half
                 "^FO210,10" +
-                "^A0N,20,20" +
-                "^FB190,1,0,C,0" +
+                "^A0N,18,18" +
+                "^FB100,1,0,C,0" +
                 "^FD" + "Cash Price" + "^FS" +
-                // Cash price below "Cash Price" text, adjusting for reduced height
+                // Cash price below "Cash Price" text
                 "^FO210,40" +
-                "^A0N,20,20" +
-                "^FB190,1,0,C,0" +
+                "^A0N,24,24" +
+                "^FB100,1,0,C,0" +
                 "^FD" + "$" + labels.cash + "^FS" +
                 "^XZ";
     }

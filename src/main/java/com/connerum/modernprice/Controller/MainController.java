@@ -7,6 +7,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
+import java.util.Objects;
+
 public class MainController {
 
     @FXML
@@ -21,6 +23,7 @@ public class MainController {
     private RadioButton sizeRatio3;
     @FXML
     private ToggleGroup group;
+    private String labelSizeString;
 
     @FXML
     protected void printClick() {
@@ -29,12 +32,23 @@ public class MainController {
         RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
         String labelSizeString = selectedRadioButton.getText();  // This gets the text value of the selected RadioButton
 
+        if (!Objects.equals(labelSizeString, this.labelSizeString)) {
+            calibrateClick();
+        }
+
         Labels userLabel = new Labels(labelSizeString, quantityString, cashString);
+
+        this.labelSizeString = labelSizeString;
 
         Zebra zebra = new Zebra();
         zebra.printLabel(userLabel);
 
         clearAllInputs();
+    }
+
+    protected void calibrateClick() {
+        Zebra zebra = new Zebra();
+        zebra.calibrate();
     }
 
 
