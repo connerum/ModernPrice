@@ -3,9 +3,8 @@ package com.connerum.modernprice.Controller;
 import com.connerum.modernprice.Model.Labels;
 import com.connerum.modernprice.Model.Zebra;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
@@ -22,8 +21,21 @@ public class MainController {
     @FXML
     private RadioButton sizeRatio3;
     @FXML
+    private ToolBar toolBar;
+    @FXML
     private ToggleGroup group;
     private String labelSizeString;
+
+
+    public ToolBar getToolbar() {
+        return toolBar;
+    }
+
+
+    @FXML
+    protected void closeWindow() {
+        System.exit(0);
+    }
 
     @FXML
     protected void printClick() {
