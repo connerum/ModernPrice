@@ -30,13 +30,14 @@ application {
 }
 
 javafx {
-    version = '17.0.6'
+    version = '21.0.1'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation 'org.slf4j:slf4j-api:2.0.9'
 }
 
 test {

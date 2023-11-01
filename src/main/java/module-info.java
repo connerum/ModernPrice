@@ -2,6 +2,7 @@ module com.connerum.modernprice {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires org.slf4j;
 
 
     opens com.connerum.modernprice to javafx.fxml;

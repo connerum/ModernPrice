@@ -40,7 +40,7 @@
       </ToolBar>
       <Pane layoutY="60.0" prefHeight="500.0" prefWidth="775.0" style="-fx-background-color: #303136; -fx-background-radius: 0 0 10 10; -fx-border-radius: 0 0 10 10; -fx-border-color: transparent  #E4F2F7 #E4F2F7 #E4F2F7; -fx-border-width: .45;">
          <children>
-            <Pane layoutX="70.0" layoutY="23.0" prefHeight="185.0" prefWidth="645.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: mpme;">
+            <Pane layoutX="70.0" layoutY="23.0" prefHeight="185.0" prefWidth="645.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: transparent;">
                <children>
                   <Label layoutX="55.0" layoutY="34.0" text="Label Size" textFill="WHITE">
                      <font>

@@ -1,19 +1,20 @@
 package com.connerum.modernprice.Model;
 
 import javax.print.*;
+import org.slf4j.Logger;
 
 public class Zebra {
-    public void printLabel(Labels labels) {
+    public void printLabel(Label label) {
         PrintFormatter printFormatter = new PrintFormatter();
 
         try {
-            for (int i = 0; i < labels.quantity; i++) {
+            for (int i = 0; i < label.quantity; i++) {
                 String defaultPrinter = PrintServiceLookup.lookupDefaultPrintService().getName();
                 System.out.println("Default printer: " + defaultPrinter);
 
                 PrintService service = PrintServiceLookup.lookupDefaultPrintService();
 
-                String zplData = printFormatter.formatLabel(labels);
+                String zplData = printFormatter.formatLabel(label);
 
                 byte[] bytes = zplData.getBytes();
 
@@ -26,7 +27,8 @@ public class Zebra {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger logger = org.slf4j.LoggerFactory.getLogger(Zebra.class);
+            logger.error("An error occurred: ", e);
         }
     }
 
@@ -42,7 +44,8 @@ public class Zebra {
             try {
                 job.print(doc, null);
             } catch (PrintException e) {
-                e.printStackTrace();
+                Logger logger = org.slf4j.LoggerFactory.getLogger(Zebra.class);
+                logger.error("An error occurred: ", e);
             }
         } else {
             System.out.println("No available print services.");

@@ -3,22 +3,22 @@ package com.connerum.modernprice.Model;
 import java.util.Objects;
 
 public class PrintFormatter {
-    public String formatLabel(Labels labels) {
+    public String formatLabel(Label label) {
         String zplData = null;
-        if (Objects.equals(labels.size, "2\"  x  1\"")) {
-            zplData = LargeSize(labels);
+        if (Objects.equals(label.size, "2\"  x  1\"")) {
+            zplData = LargeSize(label);
         }
-        else if (Objects.equals(labels.size, "1 1/4\"  x  1\"")) {
-            zplData = mediumSize(labels);
+        else if (Objects.equals(label.size, "1 1/4\"  x  1\"")) {
+            zplData = mediumSize(label);
         }
-        else if (Objects.equals(labels.size, "2\"  x  1/2\"")) {
-            zplData = smallSize(labels);
+        else if (Objects.equals(label.size, "2\"  x  1/2\"")) {
+            zplData = smallSize(label);
         }
 
         return zplData;
     }
 
-    public String smallSize(Labels labels) {
+    public String smallSize(Label label) {
         return "^XA" +
                 "^LL101" +  // Explicitly set label length
                 // "Card Price" text in the left half
@@ -30,7 +30,7 @@ public class PrintFormatter {
                 "^FO60,40" +
                 "^A0N,24,24" +
                 "^FB100,1,0,C,0" +
-                "^FD" + "$" + labels.credit + "^FS" +
+                "^FD" + "$" + label.credit + "^FS" +
 
                 // "Cash Price" text in the right half
                 "^FO210,10" +
@@ -41,11 +41,11 @@ public class PrintFormatter {
                 "^FO210,40" +
                 "^A0N,24,24" +
                 "^FB100,1,0,C,0" +
-                "^FD" + "$" + labels.cash + "^FS" +
+                "^FD" + "$" + label.cash + "^FS" +
                 "^XZ";
     }
 
-    public String mediumSize(Labels labels) {
+    public String mediumSize(Label label) {
         return "^XA" +
                 "^LL203" +  // Explicitly set label length
                 // "Card Price" text in the left half
@@ -57,7 +57,7 @@ public class PrintFormatter {
                 "^FO110,105" +
                 "^A0N,28,28" +
                 "^FB125,1,0,C,0" +
-                "^FD" + "$" + labels.credit + "^FS" +
+                "^FD" + "$" + label.credit + "^FS" +
 
                 // "Cash Price" text in the right half
                 "^FO232,60" +
@@ -68,11 +68,11 @@ public class PrintFormatter {
                 "^FO230,105" +
                 "^A0N,28,28" +
                 "^FB125,1,0,C,0" +
-                "^FD" + "$" + labels.cash + "^FS" +
+                "^FD" + "$" + label.cash + "^FS" +
                 "^XZ";
     }
 
-    public String LargeSize(Labels labels) {
+    public String LargeSize(Label label) {
         return "^XA" +
                 // "Card Price" text in the middle of the left half
                 "^FO35,50" +
@@ -83,7 +83,7 @@ public class PrintFormatter {
                 "^FO35,125" +
                 "^A0N,40,40" +
                 "^FB190,1,0,C,0" +
-                "^FD" + "$" + labels.credit + "^FS" +
+                "^FD" + "$" + label.credit + "^FS" +
 
                 // "Cash Price" text in the middle of the right half
                 "^FO235,50" +
@@ -94,7 +94,7 @@ public class PrintFormatter {
                 "^FO235,125" +
                 "^A0N,40,40" +
                 "^FB190,1,0,C,0" +
-                "^FD" + "$" + labels.cash + "^FS" +
+                "^FD" + "$" + label.cash + "^FS" +
                 "^XZ";
     }
 }
