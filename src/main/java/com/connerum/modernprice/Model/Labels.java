@@ -1,15 +1,15 @@
 package com.connerum.modernprice.Model;
 
-public class Label {
+public class Labels {
     public String size;
     public int quantity;
     public String cash;
     public String credit;
 
-    public Label(String size, int quantity, String cash) {
+    public Labels(String size, int quantity, String cash) {
         this.size = size;
         this.quantity = quantity;
-        this.cash = Convert.formatCashValue(cash);
+        this.cash = Convert.formatCurrencyValue(cash);
         this.credit = Convert.cashToCredit(cash);
     }
 }

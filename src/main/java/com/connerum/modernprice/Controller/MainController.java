@@ -1,10 +1,20 @@
 package com.connerum.modernprice.Controller;
 
-import com.connerum.modernprice.Model.Label;
+import com.connerum.modernprice.MainApplication;
+import com.connerum.modernprice.Model.Convert;
+import com.connerum.modernprice.Model.Labels;
 import com.connerum.modernprice.Model.Zebra;
+import com.connerum.modernprice.View.AppAlerts;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import org.slf4j.Logger;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class MainController {
@@ -38,6 +48,9 @@ public class MainController {
 
     @FXML
     protected void printClick() {
+        Zebra zebra = new Zebra();
+        AppAlerts appAlerts = new AppAlerts();
+
         String cashString = cashInput.getText();
         String quantityString = quantityInput.getText();  // Changed this to String to validate first
         RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
@@ -45,7 +58,7 @@ public class MainController {
         // Check if all values are filled out
         if (cashString.isEmpty() || quantityString.isEmpty() || selectedRadioButton == null) {
             // Alert or log that some values are not filled out
-            showAlert("All fields must be filled out.");
+            appAlerts.showAlert("All fields must be filled out.");
             return;
         }
 
@@ -54,39 +67,52 @@ public class MainController {
             quantityInt = Integer.parseInt(quantityString);
         } catch (NumberFormatException e) {
             // Handle invalid number format
-            showAlert("Invalid quantity format.");
+            appAlerts.showAlert("Invalid quantity format.");
             return;
         }
 
         String labelSizeString = selectedRadioButton.getText();  // This gets the text value of the selected RadioButton
 
         if (!Objects.equals(labelSizeString, this.labelSizeString)) {
-            calibrateClick();
+            zebra.calibrate();
         }
 
-        Label userLabel = new Label(labelSizeString, quantityInt, cashString);
-
+        Labels userLabels = new Labels(labelSizeString, quantityInt, cashString);
+        System.out.println(Convert.rate);
+        System.out.println(userLabels.credit);
         this.labelSizeString = labelSizeString;
 
-        Zebra zebra = new Zebra();
-        zebra.printLabel(userLabel);
+        zebra.printLabel(userLabels);
 
         clearAllInputs();
     }
 
-    private void showAlert(String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setContentText(content);
-        alert.showAndWait();
+    @FXML
+    protected void settingsClick() {
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("settings-view.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage
+            Stage stage = new Stage();
+            stage.setTitle("ModernPrice - Settings"); // Set the title of the new window
+
+            // Create a scene and set it as the content of the stage
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.setAlwaysOnTop(true);
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the new stage
+            stage.showAndWait();
+        } catch (IOException e) {
+            // Handle any exceptions, such as FXML file not found
+            Logger logger = org.slf4j.LoggerFactory.getLogger(Zebra.class);
+            logger.error("An error occurred: ", e);
+        }
     }
-
-    protected void calibrateClick() {
-        Zebra zebra = new Zebra();
-        zebra.calibrate();
-    }
-
-
 
     protected void clearAllInputs() {
         cashInput.clear();
@@ -95,6 +121,7 @@ public class MainController {
 
     @FXML
     protected void initialize() {
+        Convert.rate = "1.04";
         group = new ToggleGroup();
 
         sizeRatio1.setToggleGroup(group);

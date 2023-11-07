@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="560.0" maxWidth="775.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="775.0" style="-fx-background-color: #061826; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #E4F2F7; -fx-border-width: .45;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.connerum.modernprice.Controller.MainController">
+<Pane maxHeight="560.0" maxWidth="775.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="775.0" style="-fx-background-color: #061826; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #E4F2F7; -fx-border-width: .45;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.connerum.modernprice.Controller.MainController">
    <children>
       <ToolBar fx:id="toolBar" layoutX="10.0" layoutY="6.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="762.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10;">
         <items>
-          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closeWindow" style="-fx-padding: 0; -fx-background-color: none; -fx-border-radius: 12; -fx-background-radius: 12;" textAlignment="CENTER" translateX="-10.0" translateY="-10.0">
+          <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="34.0" maxWidth="34.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="34.0" prefWidth="34.0" style="-fx-padding: 0; -fx-background-color: none; -fx-border-radius: 0; -fx-background-radius: 0;" textAlignment="CENTER" translateX="-8.0" translateY="-17.75">
                <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/close.png" />
                      </image>
@@ -33,6 +33,15 @@
                   <Glow />
                </effect>
             </ImageView>
+            <Button mnemonicParsing="false" onAction="#settingsClick" style="-fx-padding: 0; -fx-background-color: none;" translateX="335.0">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/setting.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
         </items>
          <padding>
             <Insets left="15.0" />
@@ -42,7 +51,7 @@
          <children>
             <Pane layoutX="70.0" layoutY="23.0" prefHeight="185.0" prefWidth="645.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: transparent;">
                <children>
-                  <Label layoutX="55.0" layoutY="34.0" text="Label Size" textFill="WHITE">
+                  <Label layoutX="55.0" layoutY="26.0" text="Label Size" textFill="WHITE">
                      <font>
                         <Font name="SansSerif Bold" size="28.0" />
                      </font>
@@ -50,7 +59,7 @@
                         <Glow level="0.2" />
                      </effect>
                   </Label>
-                  <Label layoutX="56.0" layoutY="67.0" opacity="0.85" text="Choose Label Size Currently in Printer" textFill="#44ade4">
+                  <Label layoutX="56.0" layoutY="59.0" opacity="0.85" text="Choose Label Size Currently in Printer" textFill="#44ade4">
                      <font>
                         <Font name="SansSerif Bold" size="16.0" />
                      </font>
@@ -58,23 +67,23 @@
                         <Glow level="0.25" />
                      </effect>
                   </Label>
-                  <RadioButton fx:id="sizeRatio1" layoutX="56.0" layoutY="125.0" mnemonicParsing="false" text="2&quot;  x  1&quot;" textFill="WHITE">
+                  <RadioButton fx:id="sizeRatio1" layoutX="56.0" layoutY="119.0" mnemonicParsing="false" text="2&quot;  x  1&quot;" textFill="WHITE">
                      <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                      <effect>
                         <Glow level="0.25" />
                      </effect>
                   </RadioButton>
-                  <RadioButton fx:id="sizeRatio2" layoutX="237.0" layoutY="125.0" mnemonicParsing="false" text="1 1/4&quot;  x  1&quot;" textFill="WHITE">
+                  <RadioButton fx:id="sizeRatio2" layoutX="237.0" layoutY="119.0" mnemonicParsing="false" text="1 1/4&quot;  x  1&quot;" textFill="WHITE">
                      <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                      <effect>
                         <Glow level="0.25" />
                      </effect>
                   </RadioButton>
-                  <RadioButton fx:id="sizeRatio3" layoutX="446.0" layoutY="125.0" mnemonicParsing="false" text="2&quot;  x  1/2&quot;" textFill="WHITE">
+                  <RadioButton fx:id="sizeRatio3" layoutX="446.0" layoutY="119.0" mnemonicParsing="false" text="2&quot;  x  1/2&quot;" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>
@@ -118,7 +127,7 @@
                         <Glow level="0.25" />
                      </effect>
                   </Label>
-                  <TextField fx:id="cashInput" alignment="CENTER" layoutX="55.0" layoutY="106.0" prefHeight="35.0" prefWidth="175.0" promptText="\$19.99" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
+                  <TextField fx:id="cashInput" alignment="CENTER" layoutX="55.0" layoutY="106.0" prefHeight="35.0" prefWidth="175.0" promptText="\$0.00" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>
@@ -126,7 +135,7 @@
                         <Glow level="0.25" />
                      </effect>
                   </TextField>
-                  <TextField fx:id="quantityInput" alignment="CENTER" layoutX="380.0" layoutY="106.0" prefHeight="35.0" prefWidth="150.0" promptText="2" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
+                  <TextField fx:id="quantityInput" alignment="CENTER" layoutX="380.0" layoutY="106.0" prefHeight="35.0" prefWidth="150.0" promptText="0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
                      <font>
                         <Font name="Segoe UI Bold" size="18.0" />
                      </font>

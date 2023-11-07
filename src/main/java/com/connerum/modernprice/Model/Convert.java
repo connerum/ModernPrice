@@ -2,17 +2,20 @@ package com.connerum.modernprice.Model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Convert {
+    public static String rate;
     public static String cashToCredit(String cash) {
         float cashValue = extractFloatValue(cash);
-        BigDecimal creditValue = new BigDecimal(cashValue).multiply(new BigDecimal("1.04"));
+        BigDecimal creditValue = new BigDecimal(cashValue).multiply(new BigDecimal(rate));
 
         // Round up to the nearest cent
         creditValue = creditValue.setScale(2, RoundingMode.CEILING);
 
-        // Convert to string with 2 decimal places
-        return String.format("%.2f", creditValue);
+        // Format the BigDecimal as a string with 2 decimal places and commas
+        return formatCurrencyValue(creditValue.toString());
     }
 
     public static float extractFloatValue(String str) {
@@ -20,8 +23,11 @@ public class Convert {
         return Float.parseFloat(cleanedStr);
     }
 
-    public static String formatCashValue(String cash) {
-        Float cashStr = extractFloatValue(cash);
-        return String.format("%.2f", cashStr);
+    public static String formatCurrencyValue(String currencyAmount) {
+        Float currencyValue = extractFloatValue(currencyAmount);
+        NumberFormat formatter = NumberFormat.getInstance(Locale.US);
+        formatter.setMaximumFractionDigits(2);
+        formatter.setMinimumFractionDigits(2);
+        return formatter.format(currencyValue);
     }
 }

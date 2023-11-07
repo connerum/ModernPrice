@@ -1,29 +1,28 @@
 package com.connerum.modernprice.Model;
 
-import javax.print.*;
 import org.slf4j.Logger;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class Zebra {
-    public void printLabel(Label label) {
-        PrintFormatter printFormatter = new PrintFormatter();
+    public void printLabel(Labels labels) {
+        LabelFormatter labelFormatter = new LabelFormatter();
 
         try {
-            for (int i = 0; i < label.quantity; i++) {
-                String defaultPrinter = PrintServiceLookup.lookupDefaultPrintService().getName();
-                System.out.println("Default printer: " + defaultPrinter);
+            for (int i = 0; i < labels.quantity; i++) {
+                String zplData = labelFormatter.formatLabel(labels);
 
-                PrintService service = PrintServiceLookup.lookupDefaultPrintService();
+                // Write ZPL data to a temporary file
+                Path tempFile = Files.createTempFile("labels", ".zpl");
+                Files.write(tempFile, zplData.getBytes());
 
-                String zplData = printFormatter.formatLabel(label);
+                // Use 'lpr' to send the ZPL file to the printer
+                Process process = Runtime.getRuntime().exec("lpr -o raw " + tempFile);
+                process.waitFor();
 
-                byte[] bytes = zplData.getBytes();
-
-                DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
-                Doc doc = new SimpleDoc(bytes, flavor, null);
-
-                DocPrintJob job = service.createPrintJob();
-
-                job.print(doc, null);
+                // Delete the temporary file
+                Files.delete(tempFile);
             }
 
         } catch (Exception e) {
@@ -32,23 +31,25 @@ public class Zebra {
         }
     }
 
+
     public void calibrate() {
-        String calibrateCommand = "~JC\n";
-        DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
-        PrintService service = PrintServiceLookup.lookupDefaultPrintService();
+        try {
+            String calibrateCommand = "~JC\n";
 
-        if (service != null) {
-            DocPrintJob job = service.createPrintJob();
-            Doc doc = new SimpleDoc(calibrateCommand.getBytes(), flavor, null);
+            // Write ZPL data to a temporary file
+            Path tempFile = Files.createTempFile("label", ".zpl");
+            Files.write(tempFile, calibrateCommand.getBytes());
 
-            try {
-                job.print(doc, null);
-            } catch (PrintException e) {
-                Logger logger = org.slf4j.LoggerFactory.getLogger(Zebra.class);
-                logger.error("An error occurred: ", e);
-            }
-        } else {
-            System.out.println("No available print services.");
+            // Use 'lpr' to send the ZPL file to the printer
+            Process process = Runtime.getRuntime().exec("lpr -o raw " + tempFile);
+            process.waitFor();
+
+            // Delete the temporary file
+            Files.delete(tempFile);
+        }
+        catch (Exception e) {
+            Logger logger = org.slf4j.LoggerFactory.getLogger(Zebra.class);
+            logger.error("An error occurred: ", e);
         }
     }
 }

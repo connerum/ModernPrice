@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainApplication extends Application {
+    public static final String APP_VERSION = "1.0.1";
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -41,11 +42,11 @@ public class MainApplication extends Application {
             stage.setY(event.getScreenY() - yOffset);
         });
 
-        stage.setTitle("SURV ModernPrice - Offline Label Printer");
+        stage.setTitle("SURV ModernPrice - Offline Labels Printer");
         stage.initStyle(StageStyle.TRANSPARENT);
 
         // Set the application icon
-        Image icon = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("images/barcodeIcon.png")));
+        Image icon = new Image(Objects.requireNonNull(MainApplication.class.getResourceAsStream("images/barcodeIcon.icns")));
         stage.getIcons().add(icon);
 
         stage.setScene(scene);
