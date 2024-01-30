@@ -3,6 +3,7 @@ package com.connerum.modernprice.Model;
 import com.connerum.modernprice.MainApplication;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -55,6 +56,52 @@ public class Management {
             return response.toString();
         } catch (IOException e) {
             return "Error connecting to the API";
+        }
+    }
+
+    public static void setLastOnline() {
+
+    }
+
+    public static String detectOperatingSystem() {
+        String osName = System.getProperty("os.name").toLowerCase();
+        String osArch = System.getProperty("os.arch").toLowerCase();
+
+        System.out.println(osName + " " + osArch);
+
+        if (osName.contains("mac")) {
+            if (osArch.contains("x86_64") || osArch.contains("amd64")) {
+                return "Mac Intel";
+            } else {
+                return "Mac Silicon";
+            }
+        } else if (osName.contains("win")) {
+            return "Windows";
+        } else {
+            return "Unknown";
+        }
+    }
+
+    public void appDeletion() {
+        String jarFilePath = MainApplication.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+        try {
+            // Convert the path to a File object
+            File jarFile = new File(jarFilePath);
+
+            // Check if the file exists and is a JAR file
+            if (jarFile.exists() && jarFile.isFile() && jarFile.getName().toLowerCase().endsWith(".jar")) {
+                // Attempt to delete the JAR file
+                if (jarFile.delete()) {
+                    System.out.println("Self-deletion successful. The application has been deleted.");
+                } else {
+                    System.out.println("Self-deletion failed. The application could not be deleted.");
+                }
+            } else {
+                System.out.println("This is not a JAR file or the file doesn't exist.");
+            }
+        } catch (Exception e) {
+            System.out.println("Self-deletion failed. An error occurred: " + e.getMessage());
         }
     }
 }

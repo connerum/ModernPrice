@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="775.0" style="-fx-background-color: #303136;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.connerum.modernprice.Controller.SettingsController">
    <children>
-      <Label layoutX="333.0" layoutY="15.0" text="Settings" textFill="WHITE">
+      <Label layoutX="332.0" layoutY="17.0" text="Settings" textFill="WHITE">
          <font>
             <Font name="SansSerif Bold" size="35.0" />
          </font></Label>
@@ -22,7 +22,7 @@
             <Font name="SansSerif Bold" size="18.0" />
          </font>
       </Button>
-      <Pane layoutX="26.0" layoutY="83.0" prefHeight="185.0" prefWidth="350.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;">
+      <Pane layoutX="26.0" layoutY="79.0" prefHeight="185.0" prefWidth="350.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;">
          <children>
             <Label layoutX="118.0" layoutY="15.0" text="Card Rate" textFill="WHITE">
                <font>
@@ -64,7 +64,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="401.0" layoutY="83.0" prefHeight="185.0" prefWidth="350.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;">
+      <Pane layoutX="401.0" layoutY="79.0" prefHeight="185.0" prefWidth="350.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;">
          <children>
             <Label layoutX="127.0" layoutY="15.0" text="Updates" textFill="WHITE">
                <font>
@@ -90,21 +90,41 @@
       </Pane>
       <Pane layoutX="26.0" layoutY="290.0" prefHeight="185.0" prefWidth="350.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;">
          <children>
-            <Label layoutX="147.0" layoutY="15.0" text="More" textFill="WHITE">
+            <Label layoutX="109.0" layoutY="14.0" text="Information" textFill="WHITE">
                <font>
                   <Font name="SansSerif Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="updateStatusLabel12" layoutX="91.0" layoutY="43.0" text="Additional User Settings" textFill="#44ade4">
+            <Label fx:id="updateStatusLabel12" layoutX="99.0" layoutY="41.0" text="General Information" textFill="#44ade4">
                <font>
                   <Font name="SansSerif Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="93.0" text="App Version" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="180.0" layoutY="93.0" text="License Status" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="67.0" layoutY="130.0" text="1.0.2" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="209.0" layoutY="130.0" text="Registered" textFill="#6bcd69">
+               <font>
+                  <Font name="SansSerif Bold" size="15.0" />
                </font>
             </Label>
          </children>
       </Pane>
       <Pane layoutX="401.0" layoutY="290.0" prefHeight="185.0" prefWidth="350.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2;">
          <children>
-            <Label layoutX="144.0" layoutY="15.0" text="Extra" textFill="WHITE">
+            <Label layoutX="143.0" layoutY="14.0" text="Other" textFill="WHITE">
                <font>
                   <Font name="SansSerif Bold" size="24.0" />
                </font>
@@ -114,11 +134,21 @@
                   <Font name="SansSerif Regular" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="updateStatusLabel111" layoutX="90.0" layoutY="43.0" text="Extra User Preferences" textFill="#44ade4">
+            <Label fx:id="updateStatusLabel111" layoutX="103.0" layoutY="43.0" text="Additional Options" textFill="#44ade4">
                <font>
                   <Font name="SansSerif Bold" size="16.0" />
                </font>
             </Label>
+            <Button layoutX="16.0" layoutY="93.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #3E85C6; -fx-border-color: #546174; -fx-border-width: 2; -fx-border-insets: -1;" text="Report Issue" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="184.0" layoutY="93.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #3E85C6; -fx-border-color: #546174; -fx-border-width: 2; -fx-border-insets: -1;" text="Contact Support" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="16.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
