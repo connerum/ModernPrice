@@ -15,7 +15,7 @@ public class LicenseValidator {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(CHECK_URL + "?license_key=" + licenseKey))
+                    .uri(URI.create(CHECK_URL + "?merchant_id=" + licenseKey))
                     .header("Accept", "application/json") // Ensure the server knows we want JSON
                     .POST(HttpRequest.BodyPublishers.noBody())
                     .build();
@@ -24,7 +24,7 @@ public class LicenseValidator {
             // Parse the JSON response
             JSONObject jsonResponse = new JSONObject(response.body());
             String message = jsonResponse.optString("message", "");
-            return "License key is valid and activated".equals(message);
+            return "Merchant ID is valid and activated".equals(message);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

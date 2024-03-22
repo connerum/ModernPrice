@@ -9,11 +9,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainApplication extends Application {
-    public static final String APP_VERSION = "1.0.3";
+    public static final String APP_VERSION = "1.0.4";
 
     @Override
     public void start(Stage stage) throws IOException {
         String licenseKey = LicenseStorage.getLicenseKey();
+        System.out.println(LicenseValidator.checkLicenseKey(licenseKey));
 
 
         if (licenseKey == null || !LicenseValidator.checkLicenseKey(licenseKey)) {
