@@ -10,26 +10,27 @@ public class Zebra {
         LabelFormatter labelFormatter = new LabelFormatter();
 
         try {
-            for (int i = 0; i < labels.quantity; i++) {
-                String zplData = labelFormatter.formatLabel(labels);
+            String zplData = labelFormatter.formatLabel(labels);
+            // Write ZPL data to a temporary file only once
+            Path tempFile = Files.createTempFile("labels", ".zpl");
+            Files.write(tempFile, zplData.getBytes());
 
-                // Write ZPL data to a temporary file
-                Path tempFile = Files.createTempFile("labels", ".zpl");
-                Files.write(tempFile, zplData.getBytes());
+            // Construct the command to print the labels the required number of times
+            String printCommand = String.format("lpr -#%d -o raw %s", labels.quantity, tempFile);
 
-                // Use 'lpr' to send the ZPL file to the printer
-                Process process = Runtime.getRuntime().exec("lpr -o raw " + tempFile);
-                process.waitFor();
+            // Execute the command
+            Process process = Runtime.getRuntime().exec(printCommand);
+            process.waitFor();
 
-                // Delete the temporary file
-                Files.delete(tempFile);
-            }
+            // Delete the temporary file
+            Files.delete(tempFile);
 
         } catch (Exception e) {
             Logger logger = org.slf4j.LoggerFactory.getLogger(Zebra.class);
             logger.error("An error occurred: ", e);
         }
     }
+
 
 
     public void calibrate() {

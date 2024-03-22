@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="560.0" maxWidth="775.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="775.0" style="-fx-background-color: #061826; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #E4F2F7; -fx-border-width: .45;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.connerum.modernprice.Controller.LicenseController">
+   <children>
+      <ToolBar fx:id="toolBar" layoutX="10.0" layoutY="6.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="762.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10;">
+        <items>
+          <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="34.0" maxWidth="34.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="34.0" prefWidth="34.0" style="-fx-padding: 0; -fx-background-color: none; -fx-border-radius: 0; -fx-background-radius: 0;" textAlignment="CENTER" translateX="-8.0" translateY="-17.75">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="24.0" fitWidth="367.0" pickOnBounds="true" preserveRatio="true" translateX="145.0">
+               <image>
+                  <Image url="@images/name.png" />
+               </image>
+               <effect>
+                  <Glow />
+               </effect>
+            </ImageView>
+        </items>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </ToolBar>
+      <Pane layoutY="60.0" prefHeight="500.0" prefWidth="775.0" style="-fx-background-color: #303136; -fx-background-radius: 0 0 10 10; -fx-border-radius: 0 0 10 10; -fx-border-color: transparent  #E4F2F7 #E4F2F7 #E4F2F7; -fx-border-width: .45;">
+         <children>
+            <Pane layoutX="70.0" layoutY="23.0" prefHeight="174.0" prefWidth="645.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: transparent;">
+               <children>
+                  <Label layoutX="29.0" layoutY="16.0" text="Welcome to ModernPrice" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="28.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.2" />
+                     </effect>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="66.0" opacity="0.85" prefHeight="75.0" prefWidth="547.0" text="Before you dive into simplifying your pricing management, please register your application with the license key provided to you" textAlignment="CENTER" textFill="#44ade4" wrapText="true">
+                     <font>
+                        <Font name="SansSerif Bold" size="16.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.25" />
+                     </effect>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="70.0" layoutY="212.0" prefHeight="196.0" prefWidth="645.0" style="-fx-background-color: #061826; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: none;">
+               <children>
+                  <Label layoutX="28.0" layoutY="17.0" text="Register License Key" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="28.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.2" />
+                     </effect>
+                  </Label>
+                  <Label layoutX="76.0" layoutY="53.0" opacity="0.85" prefHeight="53.0" prefWidth="522.0" text="This one-time process ensures you get the full benefits of ModernPrice tailored just for you" textAlignment="CENTER" textFill="#44ade4" wrapText="true">
+                     <font>
+                        <Font name="SansSerif Bold" size="16.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.25" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="keyInput" alignment="CENTER" layoutX="128.0" layoutY="128.0" prefHeight="39.0" prefWidth="405.0" promptText="Enter your License Key" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #475569; -fx-border-color: #546174; -fx-border-width: 2; -fx-text-fill: White;">
+                     <font>
+                        <Font name="Segoe UI Bold" size="18.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.25" />
+                     </effect>
+                  </TextField>
+               </children>
+            </Pane>
+            <Button fx:id="activateButton" layoutX="313.0" layoutY="428.0" mnemonicParsing="false" onAction="#activateClick" prefHeight="50.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: #3E85C6; -fx-border-color: #546174; -fx-border-width: 2; -fx-border-insets: -1;" text="Activate" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="20.0" />
+               </font>
+               <effect>
+                  <Glow level="0.2" />
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</Pane>

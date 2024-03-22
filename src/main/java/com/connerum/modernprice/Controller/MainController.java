@@ -3,13 +3,17 @@ package com.connerum.modernprice.Controller;
 import com.connerum.modernprice.MainApplication;
 import com.connerum.modernprice.Model.Convert;
 import com.connerum.modernprice.Model.Labels;
+import com.connerum.modernprice.Model.PrinterConfigurer;
 import com.connerum.modernprice.Model.Zebra;
 import com.connerum.modernprice.View.AppAlerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
@@ -48,6 +52,9 @@ public class MainController {
 
     @FXML
     protected void printClick() {
+        PrinterConfigurer printerConfigurer = new PrinterConfigurer();
+        printerConfigurer.printerConfigurer();
+
         Zebra zebra = new Zebra();
         AppAlerts appAlerts = new AppAlerts();
 
