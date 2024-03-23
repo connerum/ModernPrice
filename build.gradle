@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'com.connerum'
-version '1.0.3'
+version '1.0.4'
 
 repositories {
     mavenCentral()
@@ -44,6 +44,7 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
 
 jlink {
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
